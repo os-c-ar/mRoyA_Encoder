@@ -3,9 +3,9 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dosing System Encoder</title>
-    <link rel="stylesheet" href="./SD_Encoder_files/bootstrap.min.css">
-    <link rel="stylesheet" href="./SD_Encoder_files/Style.css"> 
+    <title>mRoy Encoder</title>
+    <link rel="stylesheet" href="./MROY_Encoder_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./MROY_Encoder_files/Style.css"> 
     
 </head>
 <body>
@@ -15,8 +15,8 @@
         <div class="flex-box-container-1">
             
             <h3>    
-            <img id="logo-opt-ppal" src="./SD_Encoder_files/logo-nfs.png" height="50" alt=""> 
-            Codificador Sistemas de Dosificación 
+            <img id="logo-opt-ppal" src="./MROY_Encoder_files/logo-nfs.png" height="50" alt=""> 
+            Codificador Bombas mRoy A
             </h3>
     
         </div>
@@ -31,120 +31,305 @@
                 </h7>
                 <br><br>
                         
-                <label>
-                    TIPO DE SISTEMA:<input type="" id="tipo_sistema" name="" value="SD" required="" onchange="">  
-                </label>  
                 
-                <label> Tipo de Montaje:
-                    <select name="Tipo de Montaje" id="TipoDeMontaje" value="Skid" onchange="calculator()">
+                <label> Línea:
+                    <select  id="Linea" value="" onchange="calculator()">
                         <option value="">Seleccione una opción</option>
-                        <option value="K">Skid</option>
-                        <option value="S">Side Mount</option>
-                        <option value="B">Bottom Mount</option>
-                        <option value="T">Top Mount</option>
-                        <option value="G">Gabinete de Seguridad</option>
-                        <option value="BO">Base Omega</option>
-                        <option value="M">Marco Estructural</option>                     
-                        <option value="W">Wall Mount</option>
+                        <option value="MRA1">mRoy MRA Series Simplex</option>
+                   
                     </select>
                 </label>
 
-                <label> Número de Bombas:
-                    <select name="NumeroDeBombas" id="NumeroDeBombas" onchange="calculator()">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>                     
-                        <option value="8">8</option>
-                    </select>
-                </label>
 
-                <label> Marca Bomba:
-                    <select name="MarcaDeBomba" id="MarcaDeBomba" onchange="calculator()">
+                
+                <label> Material del cabezal:
+                    <select name="" id="materialCabezal" value="" onchange="calculator()">
                         <option value="">Seleccione una opción</option>
-                        <option value="M">Milton Roy</option>
-                        <option value="L">LMI</option>
-                        <option value="W">Williams</option>
-                        <option value="S">Seepex</option>
-                        <option value="LQ">Liquiflo</option>
-                        <option value="LC">LINC</option>
-                        <option value="A">ARO</option>                     
-                        <option value="I">ITC</option>
-                        <option value="AB">ALBIN</option>
-                        <option value="N">NFS</option>
+                        <option value="1">316L</option>
+                        <option value="2">PVC </option>
+                        <option value="5">Alloy 20</option>
+                        <option value="6">Hastelloy C22</option>
+                        <option value="7">PVDF</option>
+                        <option value="8">Flouride Applications</option>
+                        <option value="3">Titanium</option>                     
+                       
                     </select>
                 </label>
 
-                <label> Modelo Bomba:
-                    <select name="ModeloDeBomba" id="ModeloDeBomba" onchange="calculator()">
-                        <option value="">Seleccione una opción de Marca Primero</option>                                                                               
+                <label> Diametro del émbolo:
+                    <select  id="plungerDiameter" onchange="calculator()">
+                         <option value="">Seleccione una opción</option>
+                        <option value="H">3/8" Alta Presión</option>
+                        <option value="C">3/8"</option>
+                        <option value="D">7/16"</option>
+                        <option value="E">5/8"</option>
+                        <option value="F">1-1/16"</option>
+                        
+                    </select>
+                </label>
+
+                <label> Motor:
+                    <select  id="motor" onchange="calculator()">
+                        <option value="">Seleccione una opción</option>
+                        
+                        <option value="S5">Solo montaje, con motor de Milton Roy como un item separado, NEMA 56C</option>
+                        <option value="S1">Solo montaje, con motor de Milton Roy como un item separado, NEMA 143TC/145TC</option>
+                        <option value="S7">Solo montaje, con motor de Milton Roy como un item separado, IEC Frame71, B5 Flange</option>
+                        <option value="S8">Solo montaje, con motor de Milton Roy como un item separado, IEC Frame 80, B5 Flange</option>
+                        
+                        <option value="5X">Solo montaje, motor no suministrado por Milton Roy, NEMA 56</option>
+                        
+                        <option value="1X">Solo montaje, motor no suministrado por Milton Roy, NEMA 143TC/145TC</option>
+                        <option value="7X">Solo montaje, motor no suministrado por Milton Roy, IEC Frame 71, B5 Flange</option>
+                        <option value="8X">Solo montaje, motor no suministrado por Milton Roy, IEC Frame 80, B5Flange</option>
+                        
+                        <option value="A1">1/4HP, TEFC, 1 fases, 60hz, 1725 rpm, 56C </option>
+                        <option value="A2">1/4HP, TEFC, 3 fases, 60hz, 1725 rpm, 56C </option>
+                        <option value="A4">1/3HP, TENV, 3 fases, 60hz, 1725 rpm, 56C </option>  
+                        <option value="X1">1/3HP, XPFC, 1 fases, 60hz, 1725 rpm, 56C </option> 
+                        <option value="X2">1/3HP, XPNV, 3 fases, 60hz, 1725 rpm, 56C </option>  
+                        <option value="B1">1/2HP, TEFC, 3 fases, 60hz, 1725 rpm, 56C </option>
+                        <option value="B2">1/2HP, TENV, 3 fases, 60hz, 1725 rpm, 56C </option>
+                        <option value="X3">1/2HP, XPFC, 3 fases, 60hz, 1725 rpm, 56C </option>
+
+
+                    </select>
+                </label>
+
+                <label> Tipo Montaje Motor:
+                    <select  id="montajeMotor" onchange="calculator()">
+                        <option value="">Seleccione una opción</option>
+                        
+                        <option value="C">"Close Coupled" Solo disponible para NEMA 56C e IEC71 motor</option>
+                        <option value="A">Brida API, con acople flexible</option>
+                       
+                    </select>
+                </label>
+
+                  <label for="conexionSuccion"> Conexión de Succión:
+                    <select  name="conexionSuccion" id="conexionSuccion" onchange="calculator()">
+               
+                        <option value="">Seleccione una opción</option>
+
+                        <optgroup label="Cabezales metálicos"></optgroup>
+                            <option value="P">FNPT Horizontal 1/2" Female</option>
+                            <option value="A">1/2" 150# RF Brida roscada</option>
+                            <option value="B">1/2" 300# RF Brida roscada</option>
+                            <option value="C">1/2" 600# RF Brida roscada</option>
+                            <option value="D">1/2" 150# RF Brida soldada SW</option>
+                            <option value="E">1/2" 300# RF Brida soldada SW</option>
+                            <option value="F">1/2" 600# RF Brida soldada
+                        </optgroup>
+                        
+                        <optgroup label="Cabezales Plásticos">
+                            <option value="P">PT Vertical 1/2" Male Plástico </option>
+                            <option value="1">1/2" 150# RF Brida roscada Plástico </option>
+                        </optgroup>
+                       
+                    </select>
+                </label>
+
+                <label for="conexionDescarga"> Conexión de Descarga:
+                    <select  name="conexionDescarga" id="conexionDescarga" onchange="calculator()">
+               
+                        <option value="">Seleccione una opción</option>
+
+                         <optgroup label="Cabezales metálicos"></optgroup>
+                            <option value="P">FNPT Horizontal 1/4" Female</option>
+                            <option value="A">1/2" 150# RF Brida roscada</option>
+                            <option value="B">1/2" 300# RF Brida roscada</option>
+                            <option value="C">1/2" 600# RF Brida roscada</option>
+                            <option value="D">1/2" 150# RF Brida soldada SW</option>
+                            <option value="E">1/2" 300# RF Brida soldada SW</option>
+                            <option value="F">1/2" 600# RF Brida soldada
+                        </optgroup>
+                        
+                        <optgroup label="Cabezales Plásticos">
+                            <option value="P">NPT Vertical 1/2" Male Plástico </option>
+                            <option value="1">1/2" 150# RF Brida roscada Plástico </option>
+                        </optgroup>
+
+                    </select>
+                </label>
+
+                <label for="OringMaterial"> Material del Oring:
+                    <select  name="OringMaterial" id="OringMaterial" onchange="calculator()">
+               
+                       <option value="">Seleccione una opción</option>
+
+                        <optgroup label="Cabezales metálicos">                            
+                            <option value="V">Viton</option>
+                            <option value="E">EPDM</option>
+                            <option value="T">Teflex</option>
+                            <option value="K">Kalrez</option>                            
+                        </optgroup>
+                        <optgroup label="Cabezales Plásticos">
+                            <option value="V">Viton, Recomendado para aplicaciones de hipoclorito de sodio</option>
+                            <option value="T">Teflex, NO Recomendado para aplicaciones de hipoclorito de sodio</option>
+                            <option value="E">EPDM</option>
+                        </optgroup>
+
                     </select>
                 </label>
 
 
-                <label> Número de Tanques:
-                    <select name="NumeroDeTanques" id="NumeroDeTanques" onchange="calculator()">
-                        <option value="0">No se suministra tanque</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>                                           
-                    </select>
-                </label>
 
-                <label> Material del Tanque:
-                    <select name="MaterialDelTanque" id="MaterialDelTanque" onchange="calculator()">
-                        <option value="0">No se suministra tanque</option>
-                        <option value="M4">Metálic 304SS</option>
-                        <option value="M6">Metálic 316SS</option>
-                        <option value="P">Plástico</option>     
-                        <option value="F">Fibra de vidrio</option>                                                
-                    </select>
-                </label>
+<label for="flowControl"> Control de Caudal:
+    <select name="flowControl" id="flowControl" onchange="calculator()">
+        <option value="">Seleccione una opción</option>
+        <option value="N">Micrómetro manual estándar de aluminio</option>
+        <option value="S">Micrómetro manual de acero inoxidable con tapón SS</option>
+        <option value="L">Micrómetro manual de acero inoxidable con bloqueo (API 675) y tapón SS</option>
+        <option value="W">Controlador de caudal de actuador Milton Roy (ACC) IP68 / NEMA 4; control analógico de entrada/salida 4-20mA; 24VDC; 85V a 260V; 1 fase; 50/60 Hz # 0280088010N-CW</option>
+        <option value="E">Controlador de caudal de actuador (ACC) a prueba de explosión; control analógico de entrada/salida 4-20mA; 24VDC; 85V a 260V; 1 fase; 50/60Hz IP68 Ex d II BT4 # 0280087010N-CW</option>
+        <option value="J">Controlador de caudal de actuador (ACC HART) IP68; Protocolo Fieldbus HART 7.0 o señal analógica I/O 4-20 mA; 24VDC; 85V a 260V 1 fase 50/60Hz, -40°C/F</option>
+        <option value="H">Controlador de caudal de actuador (ACC HART) a prueba de explosión; Protocolo Fieldbus HART 7.0 o señal analógica I/O 4-20 mA; 24VDC; 85V a 260V 1 fase 50/60Hz, -40°C/F</option>
+        <option value="P">Actuador neumático</option>
+    </select>
+</label>
 
-                <label> Capacidad del Tanque:
-                    <select name="CapacidadDelTanque" id="CapacidadDelTanque" onchange="calculator()">
-                        <option value="0">No se suministra tanque</option>
-                        <option value="1"> 50L </option>
-                        <option value="2"> 100L </option>
-                        <option value="3"> 250L </option>
-                        <option value="4"> 500L </option>
-                        <option value="5"> 750L </option>
-                        <option value="6"> 1000L </option>
-                        <option value="7"> 1500L </option>
-                        <option value="8"> 2000L </option>
-                        <option value="9"> >=3000L <=10000L </option>
-                        <option value="10"> Mayores a 10.000L </option>
-                        <option value="11"> 200L </option>                                                                                         
-                    </select>
-                </label>
+<label for="diaphragmDetection"> Detección de Ruptura :
+    <select name="diaphragmDetection" id="diaphragmDetection" onchange="calculator()">
+        <option value="">Seleccione una opción</option>
+        <option value="N">Ninguno (Estándar)</option>
+        <option value="2">Montaje directo - Tipo presión con manómetro solo (Émbolos C, D y H - extremo líquido 316L)</option>
+        <option value="3">Diseño estándar - Tipo presión con manómetro y tubería externa (Émbolos C y D - Todos los extremos líquidos excepto 316L. Émbolos E y F)</option>
+        <option value="4">Tipo presión con manómetro y interruptor NEMA 4</option>
+        <option value="5">Tipo presión con manómetro y interruptor a prueba de explosión</option>
+        <option value="6">Doble diafragma con fluido intermedio sin sonda</option>
+        <option value="7">Doble diafragma con fluido intermedio y sonda</option>
+    </select>
+</label>
 
-                <label> Tipo de TC:
-                    <select name="TipoTablero" id="TipoTablero" onchange="calculator()">
-                        <option value="0"> Sin Tablero </option>
-                        <option value="1"> Tablero sin PLC </option>
-                        <option value="2"> Tablero con PLC </option>
-                        <option value="3"> Tablero con PLC + HMI </option>
-                        <option value="4"> Botonera </option>                                                                                                  
-                    </select>
-                </label>
+<label for="baseOption"> Opción de Base:
+    <select name="baseOption" id="baseOption" onchange="calculator()">
+        <option value="">Seleccione una opción</option>
+        <option value="N">Sin base</option>
+        <option value="Y">Base - Requerida para: émbolo H, PVC, PVDF, Hastelloy C, bridas de succión, detección de ruptura por presión</option>
+        <option value="V">Base VSD - Base y montaje, cableado para VSD estándar - Motor y VSD se cotizan por separado</option>
+    </select>
+</label>
 
-                <label> Clasificación:
-                    <select name="Clasificacion" id="Clasificacion" onchange="calculator()">
-                        <option value="N4"> NEMA 4 </option>
-                        <option value="N7"> NEMA 7 </option>
-                        <option value="55"> IP55 </option>
-                        <option value="65"> IP65 </option>                                                                                                                  
-                    </select>
-                </label>
 
-                <label> Puntos de Aplicación:
-                    <select name="PuntosDeClasificacion" id="PuntosDeClasificacion" onchange="calculator()">
-                        <option value=""> Un punto de aplicación </option>
-                        <option value="PA2"> Dos puntos de aplicación </option>                                                                                                                                    
-                    </select>
-                </label>
+
+<label for="codeComplete"> Código Completo:
+    <select name="codeComplete" id="codeComplete" onchange=" mostrarOpcionesAdicionales();calculator();">
+        <option value="">Seleccione una opción</option>
+        <option value="Y">Sí (La bomba puede configurarse completamente con las opciones seleccionadas hasta este punto)</option>
+        <option value="N">No (Se requieren opciones adicionales )</option>
+    </select>
+</label>
+
+<div id="opcionesAdicionales" style="display:none; margin-top:15px;">
+    <strong>Opciones adicionales requeridas:</strong>
+    <label for="liquidEndExtended"> Opciones Extendidas del Cabezal:
+        <select name="liquidEndExtended" id="liquidEndExtended" onchange="calculator()">
+            <option value="">Seleccione una opción</option>
+            <option value="N">Ninguna - Estándar</option>
+            <option value="V">Alta viscosidad - Equivalente a la antigua serie "P" mRoy. Máx 350 psi. Usa cabezal grande. No aplica para émbolo "C" ni cabezales plásticos.</option>
+            <option value="S">Lodos - Bolas 440 C y asientos 440 endurecidos (solo cabezales 316L SS, válvula de retención de bola única en succión)</option>
+            <option value="D">Desgasificación - Solo PVC y PVDF</option>
+            <option value="G">Partes húmedas G7 - Solo cabezales metálicos</option>
+            <option value="U">Diafragma de polietileno UHMW y anillos de respaldo de válvula de retención</option>
+        </select>
+    </label>
+
+    <label for="tempExtended"> Opciones Extendidas de Temperatura:
+    <select name="tempExtended" id="tempExtended" onchange="calculator()">
+        <option value="">Seleccione una opción</option>
+        <option value="N">Estándar: Ambiente 20°F a 120°F (-6°C a 49°C) - Líquido -20°F a 200°F (-29°C a 93°C)</option>
+        <option value="1">Baja temperatura ambiente: Ambiente -40°F a 120°F (-40°C a 49°C); Líquido -45°F a 200°F (-43°C a 93°C). Debe seleccionar opción de lubricación 5.</option>
+        <option value="2">Alta temperatura incluye diafragma PEEK: Ambiente 20°F a 120°F (-6°C a 49°C); Líquido 50°F a 300°F (10°C a 149°C)</option>
+    </select>
+</label>
+
+
+
+    <label for="driveExtended"> Opciones Extendidas de Transmisión:
+    <select name="driveExtended" id="driveExtended" onchange="calculator()">
+        <option value="">Seleccione una opción</option>
+        <option value="N">Estándar</option>
+        <option value="H">Opción de alta presión de succión</option>
+        <option value="S">Opción de protección contra arena - Tapón de aceite modificado con filtro - Perilla de control de caudal modificada (No aplica para actuador)</option>
+        <option value="M">Opción marina y offshore - Pernos y arandelas del cabezal recubiertos con Xylan</option>
+    </select>
+</label>
+
+
+<label for="motorExtended"> Opciones Extendidas de Motor:
+    <select name="motorExtended" id="motorExtended" onchange="calculator()">
+        <option value="">Seleccione una opción</option>
+        <option value="N">Estándar</option>
+        <option value="Y">Estas opciones están en proceso de diseño y configuración</option>
+        <option value="V">Estas opciones están en proceso de diseño y configuración</option>
+        <option value="C">Estas opciones están en proceso de diseño y configuración</option>
+    </select>
+</label>
+
+<label for="lubricationOption"> Opciones de Lubricación:
+    <select name="lubricationOption" id="lubricationOption" onchange="calculator()">
+        <option value="">Seleccione una opción</option>
+        <option value="N">Estándar - Aceite de engranajes</option>
+        <option value="3">Baja temperatura, no sintético (15°F a 50°F) - Aceite de engranajes</option>
+        <option value="4">Aceite grado alimenticio - Nevastane</option>
+        <option value="5">Sintético de alto rendimiento - Aceite hidráulico</option>
+        <option value="9">Bomba enviada sin aceite</option>
+    </select>
+</label>
+
+<label for="coatingOption"> Opciones de Sistema de Pintura:
+    <select name="coatingOption" id="coatingOption" onchange="calculator()">
+        <option value="">Seleccione una opción</option>
+        <option value="N">Estándar RAL 1018</option>
+        <option value="B">Pintura grado alimenticio - RAL 9010</option>
+        <option value="C">Pintura Offshore 250 μ RAL 1018</option>
+        <option value="D">Pintura Offshore 350 μ RAL 1018</option>
+    </select>
+</label>
+
+<label for="componentTestOption"> Opciones de Prueba de Componentes:
+    <select name="componentTestOption" id="componentTestOption" onchange="calculator()">
+        <option value="">Seleccione una opción</option>
+        <option value="N">Ninguna</option>
+        <option value="3">Prueba hidrostática - Cabezal y conexiones</option>
+        <option value="4">Prueba hidrostática - Cabezal y conexiones con inspección presenciada</option>
+    </select>
+</label>
+
+<label for="runTestOption"> Opciones de Prueba de Funcionamiento:
+    <select name="runTestOption" id="runTestOption" onchange="calculator()">
+        <option value="">Seleccione una opción</option>
+        <option value="N">Prueba de producción estándar - Siempre incluida en las pruebas siguientes</option>
+        <option value="A">Prueba estándar presenciada por el cliente</option>
+        <option value="B">Prueba de linealidad API - Curva de 5 puntos</option>
+        <option value="C">Prueba de linealidad API presenciada por el cliente - Curva de 5 puntos</option>
+        <option value="D">Prueba de repetibilidad API - Curva de 10 puntos (5 ascendentes, 5 descendentes)</option>
+        <option value="E">Prueba de repetibilidad API presenciada</option>
+        <option value="F">Paquete API - Curva de 10 puntos con prueba de componentes hidro (seleccione prueba de componentes N)</option>
+        <option value="G">Paquete de prueba API presenciada</option>
+    </select>
+</label>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+               
 
              </div>
 
@@ -156,247 +341,42 @@
                              
                             <h7> Modelo:</h7>
                             <h4 id="MODELO" value="MX"></h4>
-                            <h7> Modelo alternativo:</h7>
-                            <h4 id="MODELO2" value="MX"></h4>
+                           
                           
 
                         </fieldset>
+
+                        <!-- Agrega este botón donde quieras mostrarlo, por ejemplo después del campo MODELO -->
+                        
+                        <button type="button" onclick="copiarModelo()">Copiar modelo</button>
+                        
+                        <button type="button" onclick="generarResumen()">Generar Resumen</button>
+                                               <!-- contenedor para mostrar el resumen -->
+                       
+
                 </form>
+
+                 <div id="resumenOpciones" style="margin-top:15px;">
+                <button id="btnCopiarResumen" type="button" onclick="copiarResumen()" style="display:none; margin-bottom:10px;">Copiar resumen</button>
+                </div>
 
             </div>
 
          </div>
 
+         <!-- Agrega esto en tu HTML, por ejemplo, debajo del modelo -->
+<div>
+    <label for="codigoEntrada">Ingrese el código:</label>
+    <input type="text" id="codigoEntrada" placeholder="Ingrese el código">
+    <button type="button" onclick="generarDescripcion()">Generar Descripción</button>
+</div>
+<div id="descripcionGenerada" style="margin-top:15px;"></div>
+
+       
     
-    <script src="./SD_Encoder_files/script.js"> </script>
+<script src="./MROY_Encoder_files/script.js"> </script>
 
 
 </body>
 </html>
 
-
-
-
-<!--
-                <label> Instrumentación
-                    <select id="Instrumentación" onchange="calculator()">
-                        <option value="1"> PIT </option>
-                        <option value="2"> FIT </option>                                                                                                                                    
-                    </select>
-                </label>
-
-
-
-
-
-
-
-
-
-
-
-
-                            
-<!--                        
-                <label for="Densidad (kg/L)">
-                    Tipo : <input type="number" id="densidad" name="densidad" value="1.0" required="" onchange="calculator()">
-                </label> 
-
-                <label for="Viscosidad (cP)">
-                    Viscosidad (cP): <input type="number" name="viscosidad" id="viscosidad" value="1.0" required="" onchange="calculator()">
-                </label>
-            
-                                
-                <label> Diámetro (in):
-                    <select name="diametro" id="diametro" onchange="calculator()">
-                        <option value="0.5">1/2"</option>
-                        <option value="0.75">3/4"</option>
-                        <option value="1.0">1"</option>
-                        <option value="1.5"> 1 1/2"</option>
-                        <option value="2.0">2"</option>
-                        <option value="3.0">3"</option>
-                        <option value="4.0">4"</option>
-                        <option value="6.0">6"</option>
-                        <option value="8.0">8"</option>
-                        <option value="10.0">10"</option>
-                        <option value="12.0">12"</option>
-                        <option value="14.0">14"</option>
-                        <option value="16.0">16"</option>
-                    </select>
-                </label>
-               
-
-
-                <label> Material:
-                    <select name="material" id="material" onchange="calculator()">
-                        <option value="2">304SS</option>
-                        <option value="3">316SS</option>
-                        <option value="4">PVC</option>
-                        <option value="1">Carbón Steel</option>
-                    </select>
-                </label>
-                
-                        
-                <label>
-                    Máx Caida Presión (psi) :<input type="number" id="MaxCaidaPresion" name="MaxCaidaPresion" value="5" required="">  
-                </label>
-                
-
-                
-
-                <form>
-                    <fieldset>
-                        <label>Conexión
-                            <select name="conexion" id="conexion" onchange="calculator()">
-                                <option value="NPT">Roscada</option>
-                                <option value="SO">Bridada</option>
-                                <option value="CL">Sanitaria</option>
-                            </select>
-                        </label>
-    
-                        <label>Rating
-                            <select name="rating" id="rating" onchange="calculator()">
-                                <option value="1">150#</option>
-                                <option value="2">300#</option>
-                                <option value="3">600#</option>
-                            </select>
-                        </label>
-    
-                        <label>Material Elementos
-                            <select name="materialElementos" id="materialElementos" onchange="calculator()">
-                                <option value="2">304SS (Estandar)</option>
-                                <option value="3">316SS</option>
-                                <option value="4">304SS + Fibra de vidrio</option>
-                                
-                            </select>
-                        </label>
-    
-                        <label>Unión
-                            <select name="union" id="union" onchange="calculator()">
-                                <option value="">Sin</option>
-                                <option value="B"> Boquilla 1/2"</option>
-                                <option value="B20">Boquilla 3/4"</option>
-                                <option value="B25">Boquilla 1"</option>
-                                <option value="B40">Boquilla 1.5"</option>                          
-                            </select>
-                        </label>
-    
-                        
-    
-                    </fieldset>
-                </form>
-
- -->   
-                
-              
-                   
-
-                
-               
-        <!--
-
-            </div> 
-
-            <div id="resultadosDimensionamiento" class="flex-box-resultados">  
-                <h7>Resultados:</h7><br><br>
-
-                <form>
-                    <fieldset>
-                      <legend>Resultados Dimensionamiento</legend>
-
-                        <label> 
-                          Velocidad (m/s): &nbsp;&nbsp;&nbsp;&nbsp;  <h7 id="V" value="0">1.17</h7>
-                        </label>
-
-                        <label> 
-                            Numero de Reynolds: &nbsp;&nbsp;&nbsp;&nbsp;  <h7 id="reynolds" value="0">7916</h7>
-                        </label>
-
-                        <label> 
-                            Número de Elementos: &nbsp;&nbsp;&nbsp;&nbsp;  <h7 id="NumeroElementos" value="0">6</h7>
-                        </label>
-
-                        <label> 
-                            Longitud (mm): &nbsp;&nbsp;&nbsp;&nbsp;  <h7 id="Longitud" value="0">1266</h7>
-                        </label>
-
-                        <label> 
-                            Perdida de presión (psi): &nbsp;&nbsp;&nbsp;&nbsp;  <h7 id="PerdidaPresion" value="0">1.26</h7>
-                        </label>
-                      
-                    </fieldset>
-
-                    
-                </form>
-
-                <button class="btn btn-primary" id="buttonCalculate" onclick="calculator()"> Calcular</button>
-
-                <h5 id="Espacio" class="alarma"> <br> </h5>
-                <h5 id="alarmaVelocidad" class="alarma"></h5>
-                <h5 id="alarmaPresion" class="alarma"></h5>
-
--->
-<!--
-            </div>
--->
-             <!--Cierre de div resultados dimensionamiento-->
-
-<!--
-            </div>
--->
-       
-        <!--Cierre flex-box-comtainer 2  que contiene Info y resultados-->
-  <!--
-            </div>
--->
-    <!--Cierre comtainer 2  que contiene flex box container 1 y 2Info y resultados-->
-
-
-
-<!--
-    <div class="container-3">
-        <table class="tableResults">
-            <tbody><tr><th>Descripción</th>
-            <th>Modelo</th>
-            <th>Precio de lista</th>
-            <th>Moneda</th>
-            <th>Desc</th>
-            <th>Qty</th>
-            <th>und</th>
-            <th>V. Unit</th>
-            <th>V. Parcial</th>
-            <th> W. Unit (kg)</th>
-            <th>W. Parcial (kg)</th>
-
-            </tr><tr>
-            <td id="tdDescription">Mezclador Estático, 8 in , Conexión:NPT , Rating:150# , Material Cuerpo:304SS, Material Elementos:304SS, Número de Elementos: 6  </td>
-            <td id="tdModel">MX800NPT1226</td>
-            <td id="tdPriceL">0</td>
-            <td id="tdMoneda">USD</td>
-            <td id="tdDiscount">0.55</td>
-            <td id="tdQty">1</td>
-            <td id="tdUnidades">und</td>
-            <td id="tdUnitaryPrice">0</td>
-            <td id="tdParcialPrice">0</td>
-            <td id="tdUnitaryWeight">0</td>
-            <td id="tdParcialWeight">0</td>
-            </tr>
-
-
-        </tbody></table>
-
-    </div>
-
-
-    <div class="container-4" id="resultadoImagen">
-    <img width="100px" src="./Static Mixer Selector_files/novatecfs_mezcladores_estaticos.jpg"></div>
-
-    <div class="container-5" id="resultadoLinks">
-
-        <a href="http://www.inthem4trix.com/pages/StaticMixerSelector_1/Documents/Datasheet-Novatec-FS-Mezcladores-Est%C3%A1ticos.pdf" font=""> Catalogo </a> <br>
-       
-
-
-    </div>
-  -->
-  
