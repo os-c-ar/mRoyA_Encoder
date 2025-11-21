@@ -10,12 +10,12 @@
 </head>
 <body>
 
-    <div class="container-1">
+    <div class="container-1">  
     
         <div class="flex-box-container-1">
             
-            <h3>    
             <img id="logo-opt-ppal" src="./MROY_Encoder_files/logo-nfs.png" height="50" alt=""> 
+            <h3>         
             Codificador Bombas mRoy A
             </h3>
     
@@ -33,8 +33,8 @@
                         
                 
                 <label> Línea:
-                    <select  id="Linea" value="" onchange="calculator()">
-                        <option value="">Seleccione una opción</option>
+                    <select  id="Linea" value="mRoy MRA Series Simplex" onchange="calculator()">
+                        <!--<option value="">Seleccione una opción</option> -->
                         <option value="MRA1">mRoy MRA Series Simplex</option>
                    
                     </select>
@@ -43,7 +43,7 @@
 
                 
                 <label> Material del cabezal:
-                    <select name="" id="materialCabezal" value="" onchange="calculator()">
+                    <select name="" id="materialCabezal" value="" onchange= "habilitarSiguiente('plungerDiameter')">
                         <option value="">Seleccione una opción</option>
                         <option value="1">316L</option>
                         <option value="2">PVC </option>
@@ -57,7 +57,7 @@
                 </label>
 
                 <label> Diametro del émbolo:
-                    <select  id="plungerDiameter" onchange="calculator()">
+                    <select  id="plungerDiameter" disabled onchange= "habilitarSiguiente('gearRatio')">
                          <option value="">Seleccione una opción</option>
                         <option value="H">3/8" Alta Presión</option>
                         <option value="C">3/8"</option>
@@ -68,8 +68,20 @@
                     </select>
                 </label>
 
+                <label for="gearRatio"> Relación de Engranaje:
+                    <select name="gearRatio" id="gearRatio" disabled onchange= "habilitarSiguiente('motor')">
+                        <option value="">Seleccione una opción</option>
+                        <option value="77">77:1 Relación de engranaje</option>
+                        <option value="48">48:1 Relación de engranaje</option>
+                        <option value="24">24:1 Relación de engranaje</option>
+                        <option value="15">15:1 Relación de engranaje</option>
+                        <option value="10">9.5:1 Relación de engranaje (No disponible en bombas con extremos líquidos plásticos)</option>
+                        <option value="08">8:1 Relación de engranaje (Solo disponible en bombas con motor RPM 1425 o menos)</option>
+                    </select>
+                </label>
+
                 <label> Motor:
-                    <select  id="motor" onchange="calculator()">
+                    <select  id="motor" disabled onchange= "habilitarSiguiente('montajeMotor')">
                         <option value="">Seleccione una opción</option>
                         
                         <option value="S5">Solo montaje, con motor de Milton Roy como un item separado, NEMA 56C</option>
@@ -97,7 +109,7 @@
                 </label>
 
                 <label> Tipo Montaje Motor:
-                    <select  id="montajeMotor" onchange="calculator()">
+                    <select  id="montajeMotor" disabled onchange= "habilitarSiguiente('conexionSuccion')">
                         <option value="">Seleccione una opción</option>
                         
                         <option value="C">"Close Coupled" Solo disponible para NEMA 56C e IEC71 motor</option>
@@ -107,7 +119,7 @@
                 </label>
 
                   <label for="conexionSuccion"> Conexión de Succión:
-                    <select  name="conexionSuccion" id="conexionSuccion" onchange="calculator()">
+                    <select  name="conexionSuccion" id="conexionSuccion" disabled onchange= "habilitarSiguiente('conexionDescarga')">
                
                         <option value="">Seleccione una opción</option>
 
@@ -130,7 +142,7 @@
                 </label>
 
                 <label for="conexionDescarga"> Conexión de Descarga:
-                    <select  name="conexionDescarga" id="conexionDescarga" onchange="calculator()">
+                    <select  name="conexionDescarga" id="conexionDescarga" disabled onchange= "habilitarSiguiente('OringMaterial')">
                
                         <option value="">Seleccione una opción</option>
 
@@ -153,7 +165,7 @@
                 </label>
 
                 <label for="OringMaterial"> Material del Oring:
-                    <select  name="OringMaterial" id="OringMaterial" onchange="calculator()">
+                    <select  name="OringMaterial" id="OringMaterial" disabled onchange= "habilitarSiguiente('flowControl')">
                
                        <option value="">Seleccione una opción</option>
 
@@ -175,7 +187,7 @@
 
 
 <label for="flowControl"> Control de Caudal:
-    <select name="flowControl" id="flowControl" onchange="calculator()">
+    <select name="flowControl" id="flowControl" disabled onchange= "habilitarSiguiente('diaphragmDetection')">
         <option value="">Seleccione una opción</option>
         <option value="N">Micrómetro manual estándar de aluminio</option>
         <option value="S">Micrómetro manual de acero inoxidable con tapón SS</option>
@@ -189,7 +201,7 @@
 </label>
 
 <label for="diaphragmDetection"> Detección de Ruptura :
-    <select name="diaphragmDetection" id="diaphragmDetection" onchange="calculator()">
+    <select name="diaphragmDetection" id="diaphragmDetection" disabled onchange= "habilitarSiguiente('baseOption')">
         <option value="">Seleccione una opción</option>
         <option value="N">Ninguno (Estándar)</option>
         <option value="2">Montaje directo - Tipo presión con manómetro solo (Émbolos C, D y H - extremo líquido 316L)</option>
@@ -202,7 +214,7 @@
 </label>
 
 <label for="baseOption"> Opción de Base:
-    <select name="baseOption" id="baseOption" onchange="calculator()">
+    <select name="baseOption" id="baseOption" disabled onchange= "habilitarSiguiente('codeComplete')">
         <option value="">Seleccione una opción</option>
         <option value="N">Sin base</option>
         <option value="Y">Base - Requerida para: émbolo H, PVC, PVDF, Hastelloy C, bridas de succión, detección de ruptura por presión</option>
@@ -213,7 +225,7 @@
 
 
 <label for="codeComplete"> Código Completo:
-    <select name="codeComplete" id="codeComplete" onchange=" mostrarOpcionesAdicionales();calculator();">
+    <select name="codeComplete" id="codeComplete" disabled onchange=" mostrarOpcionesAdicionales();calculator();">
         <option value="">Seleccione una opción</option>
         <option value="Y">Sí (La bomba puede configurarse completamente con las opciones seleccionadas hasta este punto)</option>
         <option value="N">No (Se requieren opciones adicionales )</option>
@@ -221,8 +233,9 @@
 </label>
 
 <div id="opcionesAdicionales" style="display:none; margin-top:15px;">
-    <strong>Opciones adicionales requeridas:</strong>
-    <label for="liquidEndExtended"> Opciones Extendidas del Cabezal:
+    <strong>Opciones adicionales requeridas:</strong><br><br>
+
+    <label for="liquidEndExtended"> Cabezal:
         <select name="liquidEndExtended" id="liquidEndExtended" onchange="calculator()">
             <option value="">Seleccione una opción</option>
             <option value="N">Ninguna - Estándar</option>
@@ -234,7 +247,7 @@
         </select>
     </label>
 
-    <label for="tempExtended"> Opciones Extendidas de Temperatura:
+    <label for="tempExtended"> Temperatura:
     <select name="tempExtended" id="tempExtended" onchange="calculator()">
         <option value="">Seleccione una opción</option>
         <option value="N">Estándar: Ambiente 20°F a 120°F (-6°C a 49°C) - Líquido -20°F a 200°F (-29°C a 93°C)</option>
@@ -245,7 +258,7 @@
 
 
 
-    <label for="driveExtended"> Opciones Extendidas de Transmisión:
+    <label for="driveExtended"> Transmisión:
     <select name="driveExtended" id="driveExtended" onchange="calculator()">
         <option value="">Seleccione una opción</option>
         <option value="N">Estándar</option>
@@ -256,7 +269,7 @@
 </label>
 
 
-<label for="motorExtended"> Opciones Extendidas de Motor:
+<label for="motorExtended"> Motor:
     <select name="motorExtended" id="motorExtended" onchange="calculator()">
         <option value="">Seleccione una opción</option>
         <option value="N">Estándar</option>
@@ -266,7 +279,7 @@
     </select>
 </label>
 
-<label for="lubricationOption"> Opciones de Lubricación:
+<label for="lubricationOption"> Lubricación:
     <select name="lubricationOption" id="lubricationOption" onchange="calculator()">
         <option value="">Seleccione una opción</option>
         <option value="N">Estándar - Aceite de engranajes</option>
@@ -277,7 +290,7 @@
     </select>
 </label>
 
-<label for="coatingOption"> Opciones de Sistema de Pintura:
+<label for="coatingOption"> Pintura:
     <select name="coatingOption" id="coatingOption" onchange="calculator()">
         <option value="">Seleccione una opción</option>
         <option value="N">Estándar RAL 1018</option>
@@ -287,7 +300,7 @@
     </select>
 </label>
 
-<label for="componentTestOption"> Opciones de Prueba de Componentes:
+<label for="componentTestOption"> Prueba Componentes:
     <select name="componentTestOption" id="componentTestOption" onchange="calculator()">
         <option value="">Seleccione una opción</option>
         <option value="N">Ninguna</option>
@@ -296,7 +309,7 @@
     </select>
 </label>
 
-<label for="runTestOption"> Opciones de Prueba de Funcionamiento:
+<label for="runTestOption"> Prueba Funcionamiento:
     <select name="runTestOption" id="runTestOption" onchange="calculator()">
         <option value="">Seleccione una opción</option>
         <option value="N">Prueba de producción estándar - Siempre incluida en las pruebas siguientes</option>
@@ -315,48 +328,32 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-               
+</div>           
 
              </div>
 
-            <div class="flex-box-container-2">
 
-         
+<div >         
                 <form>
-                        <fieldset>
-                             
+                        <fieldset>                             
                             <h7> Modelo:</h7>
-                            <h4 id="MODELO" value="MX"></h4>
-                           
+                            <h4 id="MODELO" value="MX"></h4>                      
                           
 
                         </fieldset>
 
-                        <!-- Agrega este botón donde quieras mostrarlo, por ejemplo después del campo MODELO -->
+                     
                         
                         <button type="button" onclick="copiarModelo()">Copiar modelo</button>
                         
                         <button type="button" onclick="generarResumen()">Generar Resumen</button>
-                                               <!-- contenedor para mostrar el resumen -->
+                                         
+                        <button type="button" onclick="resetearOpciones()" id="resetButton" >Resetear Opciones</button>
                        
 
                 </form>
 
-                 <div id="resumenOpciones" style="margin-top:15px;">
+                 <div id="resumenOpciones" >
                 <button id="btnCopiarResumen" type="button" onclick="copiarResumen()" style="display:none; margin-bottom:10px;">Copiar resumen</button>
                 </div>
 
@@ -370,7 +367,7 @@
     <input type="text" id="codigoEntrada" placeholder="Ingrese el código">
     <button type="button" onclick="generarDescripcion()">Generar Descripción</button>
 </div>
-<div id="descripcionGenerada" style="margin-top:15px;"></div>
+<div id="descripcionGenerada" ></div>
 
        
     

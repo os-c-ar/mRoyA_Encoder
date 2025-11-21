@@ -1,22 +1,28 @@
 .container-1, .container-2 , .container-3, .container-4, .container-5 {
-    border: 1px solid black;
-    width: 80%;   
-    margin: 0 auto;
+    /*border: 2px solid rgb(145, 47, 47);*/
+    width: 90%;   
+    margin: 10px auto; 
+    padding: 5px; 
     text-align: left;
   
  }
 
- .container-5 {
- 
- }
+
+#logo-opt-ppal{
+    max-width: 100%;
+    align-self:flex-start;
+    margin-right: 200px;
+
+
+}
 
  .flex-box-container-1 {
     display: flex;
-    border: 1px solid black;
-    padding: 10px;
+    border: 1px solid rgb(163, 22, 22);
     flex-wrap: wrap;
     flex-direction:row;
-    justify-content: space-around;  
+    justify-content:left;  
+    margin: 5px;
  }
 
  .flex-box-container-2 {
@@ -61,7 +67,8 @@
 
 
 form {
-   /*border: 3px solid blue;*/
+   border: 3px solid blue;
+   height: 30%;
 
 }
  
@@ -103,12 +110,14 @@ fieldset {
    display: flex;
    flex: 0 0 200px;
    margin-left: 10px;
+  
  }
 
  select{
    height: 20px;
    flex: 0 0 200px;
    margin-left: 10px;
+   margin-bottom: 5px; /* Espaciado inferior */
    width: 200px;
  }
 
@@ -141,13 +150,43 @@ width: 100%;
 
     h4{  
       color: blue;
-      font-size: 40;
+      font-size: 16px;
       font-family: Verdana, Geneva, Tahoma, sans-serif ;
-      font-style: italic;
+     
 
     }
 
-    #resumenOpciones {
-    text-align: left;
+
+
+
+/* Estilo general para los botones */
+button {
+    background-color: #3a70aa; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de fuente */
+    font-weight: bold;
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    margin: 15px 10px; /* Espaciado externo */
+    transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
 }
+
+/* Cambiar el color al pasar el mouse */
+button:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+}
+
+/* Cambiar el color al hacer clic */
+button:active {
+    background-color: #003f7f; /* Azul aún más oscuro */
+}
+
+    #resumenOpciones {
+    display: block; /* Asegura que el elemento ocupe toda la línea */
+    margin-top: 15px; /* Espaciado superior */
+    text-align: left; /* Alineación del texto */
+}
+
 

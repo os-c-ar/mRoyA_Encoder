@@ -198,6 +198,7 @@ function calculator() {
         "Linea",
         "materialCabezal",
         "plungerDiameter",
+        "gearRatio",
         "motor",
         "montajeMotor",
         "conexionSuccion",
@@ -226,11 +227,18 @@ function calculator() {
         }
     });
 
+    // Inserta los guiones en las posiciones fijas
+    const modeloConGuiones = [
+        code.substring(0, 5),  // Línea
+        code.substring(5, 18), // Estandar
+        code.substring(18, 29), // Opciones adicionales
+    ].join("-");
+
     // Muestra el código en el campo MODELO
     document.getElementById("MODELO").textContent = code;
     document.getElementById("MODELO2").textContent = code; // Si también quieres mostrarlo en MODELO2
 
-    return code;
+    return modeloConGuiones;
 }
 
 
@@ -283,6 +291,7 @@ function generarResumen() {
         { id: "Linea", label: "Línea" },
         { id: "materialCabezal", label: "Material del cabezal" },
         { id: "plungerDiameter", label: "Diámetro del émbolo" },
+        { id: "gearRatio", label: "Relación de Engranaje" },
         { id: "motor", label: "Motor" },
         { id: "montajeMotor", label: "Tipo Montaje Motor" },
         { id: "conexionSuccion", label: "Conexión de Succión" },
@@ -302,7 +311,7 @@ function generarResumen() {
         { id: "runTestOption", label: "Opciones de Prueba de Funcionamiento" }
     ];
 
-    let resumen = "<h4>Resumen de opciones seleccionadas:</h4><ul>";
+    let resumen = "<p><br><h4>Resumen de opciones seleccionadas:</h4><ul>";
 
     campos.forEach(campo => {
         const select = document.getElementById(campo.id);
@@ -314,9 +323,8 @@ function generarResumen() {
 
     resumen += "</ul>";
 
-     document.getElementById("resumenOpciones").innerHTML = 
-        `<button id="btnCopiarResumen" type="button" onclick="copiarResumen()" style="margin-bottom:10px;">Copiar resumen</button>` +
-        resumen;
+     document.getElementById("resumenOpciones").innerHTML = resumen + 
+     `<button id="btnCopiarResumen" type="button" onclick="copiarResumen()" style="margin-bottom:10px;">Copiar resumen</button>` ;
 }
 
 
@@ -339,6 +347,7 @@ function generarDescripcion() {
         { id: "Linea", label: "Línea", length: 4 },
         { id: "materialCabezal", label: "Material del cabezal", length: 1 },
         { id: "plungerDiameter", label: "Diámetro del émbolo", length: 1 },
+         { id: "gearRatio", label: "Relación de Engranaje", length: 2 },
         { id: "motor", label: "Motor", length: 2 },
         { id: "montajeMotor", label: "Tipo Montaje Motor", length: 1 },
         { id: "conexionSuccion", label: "Conexión de Succión", length: 1 },
@@ -374,4 +383,30 @@ function generarDescripcion() {
 
     descripcion += "</ul>";
     document.getElementById("descripcionGenerada").innerHTML = descripcion;
+}
+
+function habilitarSiguiente(idSiguiente) {
+    const select = document.getElementById(idSiguiente);
+    if (select) {
+        select.disabled = false;
+    }
+    calculator();
+}
+
+
+function resetearOpciones() {
+    // Obtén todos los selectores
+    const selects = document.querySelectorAll("select");
+
+    // Restablece el valor de cada selector y deshabilita todos excepto el primero
+    selects.forEach((select, index) => {
+        if (index > 0 )select.value = ""; // Restablece el valor
+        if (index > 1) {
+            select.disabled = true; // Deshabilita todos excepto el primero
+        }
+    });
+
+    // Opcional: Limpia el modelo y el resumen
+    document.getElementById("MODELO").textContent = "";
+    document.getElementById("resumenOpciones").innerHTML = "";
 }
