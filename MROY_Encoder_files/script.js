@@ -113,6 +113,141 @@ const optionsMap2 = {
 };
 
 
+const plungerTableData = {
+    H: [
+        { gearRatio: '77', strokesPerMinute: 23, ratingGPH: 0.35, ratingLph: 1.3, maxGPH: 0.70, maxLph: 2.7, maxPsi: 3000, maxBar: 206.9 },
+        { gearRatio: '48', strokesPerMinute: 37, ratingGPH: 0.69, ratingLph: 2.6, maxGPH: 0.39, maxLph: 1.5, maxPsi: 3000, maxBar: 206.9 },
+        { gearRatio: '24', strokesPerMinute: 73, ratingGPH: 1.39, ratingLph: 5.3, maxGPH: 0.65, maxLph: 2.5, maxPsi: 3000, maxBar: 206.9 },
+        { gearRatio: '15', strokesPerMinute: 115, ratingGPH: 2.25, ratingLph: 8.5, maxGPH: 1.08, maxLph: 4.1, maxPsi: 3000, maxBar: 206.9 },
+        { gearRatio: '10', strokesPerMinute: 185, ratingGPH: 3.53, ratingLph: 13.4, maxGPH: 1.63, maxLph: 6.2, maxPsi: 3000, maxBar: 206.9 }
+    ],
+    C: [
+        { gearRatio: '77', strokesPerMinute: 23, ratingGPH: 0.36, ratingLph: 1.4, maxGPH: 0.80, maxLph: 3.0, maxPsi: 2000, maxBar: 137.9 },
+        { gearRatio: '48', strokesPerMinute: 37, ratingGPH: 0.73, ratingLph: 2.8, maxGPH: 0.34, maxLph: 1.3, maxPsi: 2000, maxBar: 137.9 },
+        { gearRatio: '24', strokesPerMinute: 73, ratingGPH: 1.44, ratingLph: 5.5, maxGPH: 0.68, maxLph: 2.6, maxPsi: 2000, maxBar: 137.9 },
+        { gearRatio: '15', strokesPerMinute: 115, ratingGPH: 2.32, ratingLph: 8.8, maxGPH: 1.09, maxLph: 4.1, maxPsi: 2000, maxBar: 137.9 },
+        { gearRatio: '10', strokesPerMinute: 185, ratingGPH: 3.64, ratingLph: 13.8, maxGPH: 1.70, maxLph: 6.4, maxPsi: 2000, maxBar: 137.9 }
+    ],
+    D: [
+        { gearRatio: '77', strokesPerMinute: 23, ratingGPH: 0.57, ratingLph: 2.2, maxGPH: 0.80, maxLph: 3.0, maxPsi: 1800, maxBar: 124.1 },
+        { gearRatio: '48', strokesPerMinute: 37, ratingGPH: 0.80, ratingLph: 3.0, maxGPH: 0.43, maxLph: 1.6, maxPsi: 1800, maxBar: 124.1 },
+        { gearRatio: '24', strokesPerMinute: 73, ratingGPH: 1.70, ratingLph: 6.4, maxGPH: 0.90, maxLph: 3.5, maxPsi: 1800, maxBar: 124.1 },
+        { gearRatio: '15', strokesPerMinute: 115, ratingGPH: 2.80, ratingLph: 10.6, maxGPH: 1.60, maxLph: 6.1, maxPsi: 1800, maxBar: 124.1 },
+        { gearRatio: '10', strokesPerMinute: 185, ratingGPH: 4.40, ratingLph: 16.7, maxGPH: 3.10, maxLph: 11.7, maxPsi: 1800, maxBar: 124.1 }
+    ],
+    E: [
+        { gearRatio: '48', strokesPerMinute: 37, ratingGPH: 1.80, ratingLph: 6.8, maxGPH: 0.54, maxLph: 2.0, maxPsi: 925, maxBar: 63.8 },
+        { gearRatio: '24', strokesPerMinute: 73, ratingGPH: 3.80, ratingLph: 14.4, maxGPH: 1.10, maxLph: 4.1, maxPsi: 925, maxBar: 63.8 },
+        { gearRatio: '15', strokesPerMinute: 115, ratingGPH: 6.20, ratingLph: 23.5, maxGPH: 1.90, maxLph: 7.1, maxPsi: 925, maxBar: 63.8 },
+        { gearRatio: '10', strokesPerMinute: 185, ratingGPH: 9.40, ratingLph: 35.6, maxGPH: 2.90, maxLph: 11.0, maxPsi: 925, maxBar: 63.8 }
+    ],
+    F: [
+        { gearRatio: '48', strokesPerMinute: 37, ratingGPH: 6.10, ratingLph: 23.1, maxGPH: 5.50, maxLph: 20.8, maxPsi: 350, maxBar: 24.1 },
+        { gearRatio: '24', strokesPerMinute: 73, ratingGPH: 12.30, ratingLph: 46.6, maxGPH: 9.40, maxLph: 35.6, maxPsi: 350, maxBar: 24.1 },
+        { gearRatio: '15', strokesPerMinute: 115, ratingGPH: 19.40, ratingLph: 73.4, maxGPH: 11.80, maxLph: 44.5, maxPsi: 350, maxBar: 24.1 },
+        { gearRatio: '10', strokesPerMinute: 185, ratingGPH: 30.00, ratingLph: 113.6, maxGPH: 20.90, maxLph: 79.1, maxPsi: 280, maxBar: 19.3 }
+    ]
+};
+
+
+function formatPlungerValue(value) {
+    if (value === null || value === undefined || value === '') {
+        return '-';
+    }
+    if (typeof value === 'number') {
+        return Number.isInteger(value) ? value.toString() : value.toFixed(2).replace(/\.0+$/, '').replace(/(\.\d*[1-9])0+$/, '$1');
+    }
+    return value;
+}
+
+
+function renderPlungerTable(plungerCode) {
+    const container = document.getElementById('plungerTableContainer');
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = '';
+
+    if (!plungerCode || !plungerTableData[plungerCode]) {
+        return;
+    }
+
+    const plungerSelect = document.getElementById('plungerDiameter');
+    const selectedOption = plungerSelect ? plungerSelect.querySelector(`option[value="${plungerCode}"]`) : null;
+    const plungerLabel = selectedOption ? selectedOption.textContent.trim() : `Émbolo ${plungerCode}`;
+    const plungerDisplay = `${plungerLabel} (${plungerCode})`;
+
+    const toLink = (content, gearRatio) => `
+        <a href="#" class="plunger-link" data-gear="${gearRatio}">
+            ${content}
+        </a>
+    `;
+
+    const rows = plungerTableData[plungerCode]
+        .map((row) => {
+            const gearValue = row.gearRatio;
+            return `
+                <tr>
+                    <td>${toLink(plungerDisplay, gearValue)}</td>
+                    <td>${toLink(formatPlungerValue(row.gearRatio), gearValue)}</td>
+                    <td>${toLink(formatPlungerValue(row.strokesPerMinute), gearValue)}</td>
+                    <td>${toLink(formatPlungerValue(row.ratingGPH), gearValue)}</td>
+                    <td>${toLink(formatPlungerValue(row.ratingLph), gearValue)}</td>
+                    <td>${toLink(formatPlungerValue(row.maxGPH), gearValue)}</td>
+                    <td>${toLink(formatPlungerValue(row.maxLph), gearValue)}</td>
+                    <td>${toLink(formatPlungerValue(row.maxPsi), gearValue)}</td>
+                    <td>${toLink(formatPlungerValue(row.maxBar), gearValue)}</td>
+                </tr>
+            `;
+        })
+        .join('');
+
+    container.innerHTML = `
+        <table class="tableResults plunger-table">
+            <thead>
+                <tr>
+                    <th>Émbolo seleccionado</th>
+                    <th>Relación</th>
+                    <th>Golpes/min (60 Hz)</th>
+                    <th>Caudal a 100 psi (GPH)</th>
+                    <th>Caudal a 100 psi (L/h)</th>
+                    <th>Caudal a presión máx. (GPH)</th>
+                    <th>Caudal a presión máx. (L/h)</th>
+                    <th>Presión máx. (psi)</th>
+                    <th>Presión máx. (bar)</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${rows}
+            </tbody>
+        </table>
+    `;
+
+    container.querySelectorAll('.plunger-link').forEach((link) => {
+        link.addEventListener('click', handlePlungerLinkClick);
+    });
+}
+
+
+function handlePlungerLinkClick(event) {
+    event.preventDefault();
+    const ratio = event.currentTarget ? event.currentTarget.getAttribute('data-gear') : null;
+    if (!ratio) {
+        return;
+    }
+
+    const gearSelect = document.getElementById('gearRatio');
+    if (!gearSelect) {
+        return;
+    }
+
+    gearSelect.disabled = false;
+    gearSelect.value = ratio;
+    gearSelect.dispatchEvent(new Event('change'));
+}
+
+
 
 
 updateSelectOptions('MarcaDeBomba', 'ModeloDeBomba', optionsMap);
@@ -409,4 +544,5 @@ function resetearOpciones() {
     // Opcional: Limpia el modelo y el resumen
     document.getElementById("MODELO").textContent = "";
     document.getElementById("resumenOpciones").innerHTML = "";
+    renderPlungerTable('');
 }

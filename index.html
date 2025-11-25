@@ -57,7 +57,7 @@
                 </label>
 
                 <label> Diametro del émbolo:
-                    <select  id="plungerDiameter" disabled onchange= "habilitarSiguiente('gearRatio')">
+                    <select  id="plungerDiameter" disabled onchange= "renderPlungerTable(this.value); habilitarSiguiente('gearRatio')">
                          <option value="">Seleccione una opción</option>
                         <option value="H">3/8" Alta Presión</option>
                         <option value="C">3/8"</option>
@@ -67,6 +67,8 @@
                         
                     </select>
                 </label>
+
+                <div id="plungerTableContainer" class="plunger-table-wrapper"></div>
 
                 <label for="gearRatio"> Relación de Engranaje:
                     <select name="gearRatio" id="gearRatio" disabled onchange= "habilitarSiguiente('motor')">
